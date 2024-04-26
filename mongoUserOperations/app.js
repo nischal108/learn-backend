@@ -28,8 +28,27 @@ app.post("/create",async (req,res)=>{
 
 app.get("/users",async (req,res)=>{
     let allusers = await userModel.find();
-    console.log(allusers);
     res.render("users",{allusers})
+})
+
+app.get('/delete/:id',async (req,res)=>{
+    const id = req.params.id;
+    let deltedUSer = await userModel.findOneAndDelete({_id:id});
+    res.redirect("/users");
+})
+
+
+app.get('/update/:id',async (req,res)=>{
+    const id = req.params.id;
+    const requestedUser = await userModel.findOne({_id:id});
+    res.render("edit",{user : requestedUser});
+})
+
+app.post('/users/:id/edit',async (req,res)=>{
+    const userId = req.params.id;
+    const updatedUserData = req.body;
+    await userModel.findByIdAndUpdate(userId, updatedUserData);
+    res.redirect(`/users`);
 })
 
 app.listen(PORT,()=>{

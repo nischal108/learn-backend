@@ -26,14 +26,16 @@
         <div class="grid grid-cols-3 gap-8">
             <% allusers.forEach((user)=>{ %>
                 <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    <div class="relative max-h-4l">
-                        <img class="w-full h-41"
-                            src= "<%= user.image %>">
+                    <div class="relative object-cover object-center p-3">
+                        <img class="w-full max-h-40 object-cover object-center rounded-t-lg " src="<%= user.image %>" alt="User Image">
                     </div>
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold mb-4">User Details</h2>
-                        <p class="text-gray-300">Name: <%= user.name %></p>
-                        <p class="text-gray-300">Email: <%= user.email %></p>
+                    <div class="p-3">
+                        <p class="text-gray-200">Name: <%= user.name %></p>
+                        <p class="text-gray-400">Email: <%= user.email %></p>
+                    </div>
+                    <div class="flex justify-between items-center p-2">
+                        <p class="text"><a href="/update/<%= user._id %>">Update</a></p>
+                        <p class="text-red-600"><a href="/delete/<%= user._id %>">Delete</a></p>
                     </div>
                 </div>
            <% })%>
