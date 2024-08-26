@@ -2,7 +2,7 @@ import { Client } from "pg";
 
 // Connection string
 const connectionString: string =
-  "postgresql://FirstDatabase_owner:ZNlQk4q2JOei@ep-gentle-fire-a5bmvtbm.us-east-2.aws.neon.tech/FirstDatabase?sslmode=require";
+  "your db url ";
 
 // Create a new client
 const client = new Client({
